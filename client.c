@@ -7,14 +7,21 @@ void		sendFileName(int clientSocket, char *argv)
 	char		*name;
 
 	name = strrchr(argv, '/') + 1;
+	printf("File '%s' ", name);
 	if (send(clientSocket, name, strlen(name), 0) <= 0)
 		errorMsg("can't send file");
 }
 
 int main(int argc, char *argv[])
 {
-	char		buf[10];
+	char		buf[READ_SIZE] = {0};
 	int		fd;
+	int		clientSocket;
+	struct	sockaddr_in socketAddr;
+	int		status;
+	size_t	readed;
+	size_t	sended;
+
 	if (argc != 2)
 		errorMsg("Wrong number of parameters!");
 	
@@ -23,40 +30,29 @@ int main(int argc, char *argv[])
 		errorMsg("Can't open file!");
 
 	// 1. Create socket for incoming connections
-	int		clientSocket;
 	clientSocket = socket(AF_INET, SOCK_STREAM, IPPROTO_TCP);
-	
 	if (clientSocket < 0)
 		errorMsg("socket() failed");
 	
 	// 2. set IP/PORT of Server
-	struct	sockaddr_in socketAddr;
-	
 	socketAddr.sin_family = AF_INET;
 	socketAddr.sin_port = htons(12345);
 	socketAddr.sin_addr.s_addr = htonl(INADDR_LOOPBACK);
 	
-	int		status;
 	status = connect(clientSocket, (struct sockaddr *) &socketAddr, sizeof(socketAddr));
-	
 	if (status < 0)
 		errorMsg("connect() failed");
-	
-	size_t	readed;
-	size_t	sended;
-	
+
 	sendFileName(clientSocket, argv[1]);
-	
-	//---send file content
-	while ((readed = read(fd, buf, 10)) > 0)
+
+	while ((readed = read(fd, buf, READ_SIZE - 1)) > 0)
 	{
 		sended = send(clientSocket, buf, readed, 0);
 		if (sended <= 0)
 			errorMsg("can't send file");
 	}
-	
 	close(fd);
+	printf("successfully send!\n");
 	shutdown(clientSocket, SHUT_RDWR);
-	//		close(slaveSocket);
 	return 0;
 }

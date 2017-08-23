@@ -21,5 +21,7 @@
 
 
 void		errorMsg(char *str);
+void		sendFileName(int clientSocket, char *argv);
+int		getFileName(int slaveSocket);
 
 #endif
