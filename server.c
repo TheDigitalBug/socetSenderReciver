@@ -1,5 +1,5 @@
 
-#include "serClient.h"
+#include "serverClient.h"
 
 int		getFileName(int slaveSocket)
 {
@@ -8,7 +8,8 @@ int		getFileName(int slaveSocket)
 
 	if (recv(slaveSocket, buf, NAME_MAX, 0) < 0)
 		errorMsg("Can't recieve file name");
-	fd = open(buf, O_WRONLY | O_CREAT | O_TRUNC, 777);
+	remove(buf);
+	fd = open(buf, O_RDWR | O_CREAT | O_TRUNC, 777);
 	if (fd < 0)
 		errorMsg("can't create file");
 	printf("[File '%s' ", buf);

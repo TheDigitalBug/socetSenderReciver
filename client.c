@@ -1,14 +1,16 @@
 
-#include "serClient.h"
+#include "serverClient.h"
 
 void		sendFileName(int clientSocket, char *argv)
 {
 	// remove path to file from file name
-	char		*name;
+	char		buf[NAME_MAX + 9] = {0};
 
-	name = strrchr(argv, '/') + 1;
-	printf("File '%s' ", name);
-	if (send(clientSocket, name, strlen(name), 0) <= 0)
+	system("mkdir -p received");	
+	strcat(buf, "received/");
+	strcat(buf, strrchr(argv, '/') + 1);
+	printf("File '%s' ", buf + 8);
+	if (send(clientSocket, buf, strlen(buf), 0) <= 0)
 		errorMsg("can't send file");
 }
 

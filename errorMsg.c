@@ -1,5 +1,5 @@
 
-#include "serClient.h"
+#include "serverClient.h"
 
 void		errorMsg(char *str)
 {

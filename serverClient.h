@@ -1,6 +1,6 @@
 
-#ifndef serClient_h
-#define serClient_h
+#ifndef serverClient_h
+#define serverClient_h
 
 #define READ_SIZE 256
 
