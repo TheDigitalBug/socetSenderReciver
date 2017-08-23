@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		8A410BF11F4D96E8003BE5D2 /* server.c in Sources */ = {isa = PBXBuildFile; fileRef = 8A410BEF1F4D96E8003BE5D2 /* server.c */; };
-		8A410BF21F4D96E8003BE5D2 /* TCPClient.c in Sources */ = {isa = PBXBuildFile; fileRef = 8A410BF01F4D96E8003BE5D2 /* TCPClient.c */; };
 		8A410BF51F4DDEE5003BE5D2 /* client.c in Sources */ = {isa = PBXBuildFile; fileRef = 8A410BF41F4DDEE5003BE5D2 /* client.c */; };
 		8A410BF71F4DDF04003BE5D2 /* errorMsg.c in Sources */ = {isa = PBXBuildFile; fileRef = 8A410BF61F4DDF04003BE5D2 /* errorMsg.c */; };
 /* End PBXBuildFile section */
@@ -28,7 +27,6 @@
 /* Begin PBXFileReference section */
 		8A410BE51F4D96B9003BE5D2 /* Socetc */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = Socetc; sourceTree = BUILT_PRODUCTS_DIR; };
 		8A410BEF1F4D96E8003BE5D2 /* server.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = server.c; sourceTree = "<group>"; };
-		8A410BF01F4D96E8003BE5D2 /* TCPClient.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = TCPClient.c; sourceTree = "<group>"; };
 		8A410BF31F4D973A003BE5D2 /* serClient.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = serClient.h; sourceTree = "<group>"; };
 		8A410BF41F4DDEE5003BE5D2 /* client.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = client.c; sourceTree = "<group>"; };
 		8A410BF61F4DDF04003BE5D2 /* errorMsg.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = errorMsg.c; sourceTree = "<group>"; };
@@ -52,7 +50,6 @@
 				8A410BEF1F4D96E8003BE5D2 /* server.c */,
 				8A410BF41F4DDEE5003BE5D2 /* client.c */,
 				8A410BF31F4D973A003BE5D2 /* serClient.h */,
-				8A410BF01F4D96E8003BE5D2 /* TCPClient.c */,
 				8A410BE61F4D96B9003BE5D2 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -123,7 +120,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				8A410BF71F4DDF04003BE5D2 /* errorMsg.c in Sources */,
-				8A410BF21F4D96E8003BE5D2 /* TCPClient.c in Sources */,
 				8A410BF11F4D96E8003BE5D2 /* server.c in Sources */,
 				8A410BF51F4DDEE5003BE5D2 /* client.c in Sources */,
 			);

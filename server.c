@@ -1,14 +1,22 @@
 
 #include "serClient.h"
 
+int		getFileName(int slaveSocket)
+{
+	int		fd;
+	char		buf[NAME_MAX];
 
+	if (recv(slaveSocket, buf, NAME_MAX, 0) < 0)
+		errorMsg("Can't recieve file name");
+	fd = open(buf, O_WRONLY | O_CREAT | O_TRUNC, 777);
+	if (fd < 0)
+		errorMsg("can't create file");
+	return (fd);
+}
 
-int main(/*int argc, const char * argv[]*/)
+int		main(/*int argc, const char * argv[]*/)
 {
 	// 1. Create socket for incoming connections
-	// AF_INET     -> iPv4
-	// SOCK_STREAM -> TCP type of communitation
-	// masterSocet -> socket descriptor
 	int		masterSocket;
 	masterSocket = socket(AF_INET, SOCK_STREAM, IPPROTO_TCP);
 	
@@ -16,11 +24,7 @@ int main(/*int argc, const char * argv[]*/)
 		errorMsg("socket() failed");
 
 
-	// 2. Dlind. Set address and port to server
-	// htons() / htonl() ->convert to shor whith networt endians ???
-	// INADDR_LOOPBACK   -> 127.0.0.1
-	// INADDR_ANY        -> 0.0.0.0
-	
+	// 2. Blind. Set address and port to server
 	struct	sockaddr_in socketAddr;
 	
 	socketAddr.sin_family = AF_INET;
@@ -41,47 +45,28 @@ int main(/*int argc, const char * argv[]*/)
 		errorMsg("listen() failed");
 	
 	printf("SERVER is started\n");
-	printf("Wait for incoming inforamtion:\n");
+	printf("Waiting...\n");
 	
 	// 4. Accept.
 	int		slaveSocket;
+	char		buf[READ_SIZE];
+	size_t	recived;
+	int		fd;
 	while(1)
 	{
-		//                                    | *clientAddr тут адресс и порт откуда пришел клиент
-		//                                       | *sizeof(clientAddr)
-		char	buf[255] = {0}; //255 MAX_NAME
 		slaveSocket = accept(masterSocket, 0, 0);
-		size_t recived;
+		fd = getFileName(slaveSocket);
 		
-		recived = recv(slaveSocket, buf, 3, 0);
-		printf("%s\n", buf);
-		
-		int fd = open(buf, O_RDWR|O_TRUNC|O_CREAT);
-		
-		if (fd < 0)
-			errorMsg("ERROR:can't create file");
-		
-		while((recived = recv(slaveSocket, buf, 5, 0)) > 0)
+		while((recived = recv(slaveSocket, buf, READ_SIZE - 1, 0)) > 0)
 		{
-			
-			send(slaveSocket, buf, 5, 0);
-			
-			write(1, &buf, 5);
-			write(fd, &buf, 5);
+			write(fd, &buf, READ_SIZE - 1); ///UNICODE
 			bzero(buf, 100);
-			
-			
 		}
 		close(fd);
+		printf("[File Recieved!]\n");
+		printf("Waiting...\n");
 		//		shutdown(slaveSocket, SHUT_RDWR);
 		//		close(slaveSocket);
-printf("\n");
-		
-	
 	}
-
-	
-	
-	
 	return 0;
 }

@@ -3,6 +3,6 @@
 
 void		errorMsg(char *str)
 {
-	printf("%s\n", str);
+	printf("ERROR: %s\n", str);
 	exit (0);
 }
