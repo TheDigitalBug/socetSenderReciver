@@ -34,8 +34,9 @@ int		main(/*int argc, const char * argv[]*/)
 
 	// 2. Blind. Set address and port to server
 	socketAddr.sin_family = AF_INET;
-	socketAddr.sin_port = htons(12345);
-	socketAddr.sin_addr.s_addr = htonl(INADDR_ANY);
+	socketAddr.sin_port = htons(SERVER_PORT);
+//	socketAddr.sin_addr.s_addr = htonl(INADDR_ANY);
+	inet_pton(AF_INET, SERVER_IP, &(socketAddr.sin_addr));
 	
 	status = bind(masterSocket, (struct sockaddr *) &socketAddr, sizeof(socketAddr));
 	if (status < 0)

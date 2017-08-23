@@ -38,8 +38,10 @@ int main(int argc, char *argv[])
 	
 	// 2. set IP/PORT of Server
 	socketAddr.sin_family = AF_INET;
-	socketAddr.sin_port = htons(12345);
-	socketAddr.sin_addr.s_addr = htonl(INADDR_LOOPBACK);
+	socketAddr.sin_port = htons(SERVER_PORT);
+//	socketAddr.sin_addr.s_addr = htonl(INADDR_LOOPBACK);
+	inet_pton(AF_INET, SERVER_IP, &(socketAddr.sin_addr));
+	
 	
 	status = connect(clientSocket, (struct sockaddr *) &socketAddr, sizeof(socketAddr));
 	if (status < 0)
