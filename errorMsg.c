@@ -3,6 +3,6 @@
 
 void		errorMsg(char *str)
 {
-	printf("ERROR: %s\n", str);
+	printf(COLOR_RED"ERROR: %s\n"COLOR_RESET, str);
 	exit (0);
 }

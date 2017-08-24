@@ -1,10 +1,10 @@
-# Project Name : socketSenderReceiver
+# Project Name : socketSenderReciver
 
 # Info:
-socketSenderReceiver is written on C project.
+socketSenderReciver is written on C project.
 Client-Server architecture.
-I wrote this program to send file from Client to Server.
-The Server will save the file locally. 
+I wrote this code to send file from Client to Server.
+The Server should save the file locally. 
 
 # Gif:
 ![snakeGame](/snake.gif3?raw=true "snakeGame")
