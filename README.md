@@ -6,8 +6,8 @@ Client-Server architecture.
 I wrote this code to send file from Client to Server.
 The Server should save the file locally. 
 
-# Gif:
-![snakeGame](/snake.gif3?raw=true "snakeGame")
+#
+![servClient](/servClient.png?raw=true "servClient")
 
 # Usage:
 ```
@@ -21,6 +21,7 @@ Waiting...
 ```
 run client:
 ```
-$> ./client MOV004.MOD 
-File '/MOV004.MOD' successfully send!
+$> ./client 192.168.0.123 1238 MOV004.MOD
+// ./client serverIP serverPORT fileToSend
+
 ```
