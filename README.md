@@ -6,8 +6,8 @@ Client-Server architecture.
 I wrote this code to send file from Client to Server.
 The Server should save the file locally. 
 
-# Gif:
-![snakeGame](/servClient.png?raw=true "snakeGame")
+#
+![servClient](/servClient.png?raw=true "servClient")
 
 # Usage:
 ```
