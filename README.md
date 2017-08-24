@@ -1,10 +1,9 @@
 # Project Name : socketSenderReciver
 
 # Info:
+This project shows how to send and receive data via TCP/IP using Socket.
 socketSenderReciver is written on C project.
 Client-Server architecture.
-I wrote this code to send file from Client to Server.
-The Server should save the file locally. 
 
 #
 ![servClient](/servClient.png?raw=true "servClient")
