@@ -14,7 +14,7 @@ int				getFileName(int slaveSocket)
 	fd = open(buf, O_RDWR | O_CREAT | O_TRUNC, 777);
 	if (fd < 0)
 		errorMsg("can't create file");
-
+	printf("[File '%s' ", buf);
 	return (fd);
 }
 
