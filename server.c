@@ -14,7 +14,7 @@ int				getFileName(int slaveSocket)
 	fd = open(buf, O_RDWR | O_CREAT | O_TRUNC, 777);
 	if (fd < 0)
 		errorMsg("can't create file");
-	printf("[File '%s' ", buf);
+
 	return (fd);
 }
 
@@ -53,7 +53,7 @@ int				main(void)
 	if (listen(masterSocket, SOMAXCONN) < 0)
 		errorMsg("listen() failed");
 	
-	printf("SERVER [%s : %d] started\n", SERVER_IP, SERVER_PORT);
+	printf(COLOR_GREEN"SERVER [%s : %d] started\n"COLOR_RESET, SERVER_IP, SERVER_PORT);
 	printf("Waiting...\n");
 	
 	// 4. Accept.
