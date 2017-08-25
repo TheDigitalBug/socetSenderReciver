@@ -74,10 +74,12 @@ int				main(void)
 			bzero(buf, READ_SIZE - 1);
 		}
 		close(fd);
-		shutdown(slaveSocket, SHUT_RDWR);
+		close(slaveSocket);
 		printf("Recieved!]\n");
 		printf(COLOR_RED"Client [%s] disconnected\n\n"COLOR_RESET, strClientAddr);
 		printf("Waiting for new connection...\n");
 	}
+	close(slaveSocket);
+	close(masterSocket);
 	return 0;
 }
