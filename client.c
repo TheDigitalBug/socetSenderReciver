@@ -89,9 +89,13 @@ int main(int argc, char *argv[])
 		sended = send(clientSocket, buf, readed, 0);
 		if (sended <= 0)
 			errorMsg("can't send");
+		 if (sended != (size_t)recv(clientSocket, buf, sended, 0))
+			 errorMsg("file wasn't send!");
 		printf("[%d | %zu bytes]\r", fileSize, sendedTotal += sended);
+		
 
 	}
+	
 	close(fd);
 	printf("\nsuccessfully send!\n");
 	printf(COLOR_RED"Disconnected from server [%s : %d] \n\n"COLOR_RESET, SERVER_IP, SERVER_PORT);

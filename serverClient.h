@@ -2,7 +2,7 @@
 #ifndef serverClient_h
 #define serverClient_h
 
-#define READ_SIZE 128
+#define READ_SIZE 1024
 #define SERVER_IP "10.113.7.10"
 #define SERVER_PORT 12345
 
@@ -23,6 +23,8 @@
 #include <sys/stat.h>
 
 #include <limits.h>
+
+#include <pthread.h>
 
 
 void		errorMsg(char *str);
