@@ -2,8 +2,8 @@
 #ifndef serverClient_h
 #define serverClient_h
 
-#define READ_SIZE 256
-#define SERVER_IP "127.0.0.1"
+#define READ_SIZE 1024
+#define SERVER_IP "10.113.7.10"
 #define SERVER_PORT 12345
 
 #define COLOR_RED     "\x1b[31m"

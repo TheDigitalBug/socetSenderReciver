@@ -6,7 +6,10 @@ void		sendFileName(int clientSocket, char *argv)
 	char		*name;
 
 	// remove path to file from file name
-	name = strrchr(argv, '/') + 1;
+	if ((name = strrchr(argv, '/')) == NULL)
+		name = argv;
+	else
+		name = strrchr(argv, '/') + 1;
 	printf("File '%s' ", name);
 	if (send(clientSocket, name, strlen(name), 0) <= 0)
 		errorMsg("can't send file");
